@@ -1,0 +1,85 @@
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 20%; left:45%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+
+	<h1>Stroke Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="POST">
+
+    <select name = 'work_type'required="required">
+    <option value="">Select Work_Type </option>
+    <option value = "Private"> Private </option>
+    <option value = "Self-employed"> Self-employed </option>
+    <option value = "Govt_job"> Govt_job </option>
+    <option value = "children"> children </option>
+    <option value = "Never_work"> Never_work </option>
+    </select>
+    <br></br>
+
+    <select name = 'gender'required="required">
+    <option value="">Select Gender </option>
+    <option value = "Female"> Female </option>
+    <option value = "Male"> Male </option>
+    </select>
+    <br></br>
+
+    <select name = 'Residence_type'required="required">
+    <option value="">Select Residence_Type </option>
+    <option value = "Rural"> Rural </option>
+    <option value = "Urban"> Urban </option>
+    </select>
+    <br></br>
+
+    <select name = 'ever_married'required="required">
+    <option value="">Select Marriage Status </option>
+    <option value = "Yes"> Yes </option>
+    <option value = "No"> No </option>
+    </select>
+    <br></br>
+
+    <select name = 'smoking_status'required="required">
+    <option value="">Select Smoking Status </option>
+    <option value = "formerly smoked"> formerly smoked </option>
+    <option value = "never smoked">  never smoked</option>
+    <option value = "smokes"> smokes </option>
+    <option value = "Unknown"> Unknown </option>
+    </select>
+    <br></br>
+
+    <input type="text" name="age" placeholder="age" required="required" />
+    <input type="text" name="hypertension" placeholder="hypertension" required="required" />
+    <input type="text" name="heart_disease" placeholder="heart_disease" required="required" />
+    <input type="text" name="avg_glucose_level" placeholder="avg_glucose_level" required="required" />
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict Stroke Status</button>
+    
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
